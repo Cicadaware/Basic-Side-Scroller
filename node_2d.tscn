@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dmtml1es2u8tg"]
+[gd_scene load_steps=8 format=3 uid="uid://dmtml1es2u8tg"]
 
 [ext_resource type="Script" uid="uid://chwgfm4defjwi" path="res://player.gd" id="1_0e48y"]
 [ext_resource type="Texture2D" uid="uid://pw3pxx865n8c" path="res://resources/ball.png" id="2_q6r6c"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://r0p0dlhdxsg" path="res://resources/triangle.png" id="4_0hol4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_epypp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hol4"]
+size = Vector2(3.8, 50.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6r6c"]
 size = Vector2(128, 128)
@@ -24,14 +27,16 @@ texture = ExtResource("2_q6r6c")
 scale = Vector2(5, 5)
 shape = SubResource("CircleShape2D_epypp")
 
-[node name="FloorRay" type="RayCast2D" parent="Player"]
-exclude_parent = false
-target_position = Vector2(0, 100)
-collide_with_areas = true
+[node name="FloorArea" type="Area2D" parent="Player"]
+scale = Vector2(25, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/FloorArea"]
+position = Vector2(-0.0400003, 41)
+shape = SubResource("RectangleShape2D_0hol4")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
-[node name="Ground" type="StaticBody2D" parent="."]
+[node name="Ground" type="StaticBody2D" parent="." groups=["Ground"]]
 position = Vector2(618, 27)
 scale = Vector2(15.296, 0.383178)
 
@@ -44,7 +49,7 @@ texture = ExtResource("3_0hol4")
 position = Vector2(5, 3)
 shape = SubResource("RectangleShape2D_q6r6c")
 
-[node name="Ground3" type="StaticBody2D" parent="."]
+[node name="Ground3" type="StaticBody2D" parent="." groups=["Ground"]]
 position = Vector2(641, -54)
 scale = Vector2(-3.41823, 0.805953)
 
@@ -58,7 +63,7 @@ position = Vector2(-8.52759, -26.0235)
 scale = Vector2(19.8316, 24.7876)
 polygon = PackedVector2Array(2.79994, 3.67267, 1.98265, 0.369649, 0.884191, -4.06972, -1.00208, 3.67267)
 
-[node name="Ground4" type="StaticBody2D" parent="."]
+[node name="Ground4" type="StaticBody2D" parent="." groups=["Ground"]]
 position = Vector2(1533, -217)
 scale = Vector2(2, 0.383)
 
@@ -71,8 +76,8 @@ texture = ExtResource("3_0hol4")
 position = Vector2(5, 3)
 shape = SubResource("RectangleShape2D_q6r6c")
 
-[node name="Ground5" type="StaticBody2D" parent="."]
-position = Vector2(1533, -481)
+[node name="Ground5" type="StaticBody2D" parent="." groups=["Ground"]]
+position = Vector2(1090, -437)
 scale = Vector2(2, 0.383)
 
 [node name="Sprite2D" type="Sprite2D" parent="Ground5"]
@@ -84,8 +89,8 @@ texture = ExtResource("3_0hol4")
 position = Vector2(5, 3)
 shape = SubResource("RectangleShape2D_q6r6c")
 
-[node name="Ground6" type="StaticBody2D" parent="."]
-position = Vector2(1117, -762)
+[node name="Ground6" type="StaticBody2D" parent="." groups=["Ground"]]
+position = Vector2(1428, -683)
 scale = Vector2(2, 0.383)
 
 [node name="Sprite2D" type="Sprite2D" parent="Ground6"]
@@ -97,8 +102,8 @@ texture = ExtResource("3_0hol4")
 position = Vector2(5, 3)
 shape = SubResource("RectangleShape2D_q6r6c")
 
-[node name="Ground7" type="StaticBody2D" parent="."]
-position = Vector2(1532, -1062)
+[node name="Ground7" type="StaticBody2D" parent="." groups=["Ground"]]
+position = Vector2(1041, -965)
 scale = Vector2(2, 0.383)
 
 [node name="Sprite2D" type="Sprite2D" parent="Ground7"]
@@ -110,8 +115,8 @@ texture = ExtResource("3_0hol4")
 position = Vector2(5, 3)
 shape = SubResource("RectangleShape2D_q6r6c")
 
-[node name="Ground8" type="StaticBody2D" parent="."]
-position = Vector2(1742, -1205)
+[node name="Ground8" type="StaticBody2D" parent="." groups=["Ground"]]
+position = Vector2(1483, -1203)
 scale = Vector2(2, 0.383)
 
 [node name="Sprite2D" type="Sprite2D" parent="Ground8"]
@@ -136,3 +141,5 @@ texture = ExtResource("3_0hol4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground2"]
 position = Vector2(5, 3)
 shape = SubResource("RectangleShape2D_q6r6c")
+
+[connection signal="body_entered" from="Player/FloorArea" to="Player" method="_on_floor_area_body_entered"]
