@@ -9,7 +9,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_epypp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0hol4"]
-size = Vector2(3.8, 50.5)
+size = Vector2(5.3, 64.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6r6c"]
 size = Vector2(128, 128)
@@ -75,7 +75,7 @@ scale = Vector2(0.282707, 0.379693)
 texture = ExtResource("5_q6r6c")
 
 [node name="Player" type="RigidBody2D" parent="."]
-position = Vector2(-236, -53)
+position = Vector2(-229, -53)
 script = ExtResource("1_0e48y")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
@@ -90,7 +90,7 @@ shape = SubResource("CircleShape2D_epypp")
 scale = Vector2(25, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/FloorArea"]
-position = Vector2(-0.0400003, 41)
+position = Vector2(5.96046e-08, 80)
 shape = SubResource("RectangleShape2D_0hol4")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -227,6 +227,20 @@ texture = ExtResource("3_0hol4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground2"]
 position = Vector2(5, 3)
+shape = SubResource("RectangleShape2D_q6r6c")
+
+[node name="Ground3" type="StaticBody2D" parent="."]
+position = Vector2(-309, -638)
+rotation = 1.5708
+scale = Vector2(10, 0.383)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground3"]
+position = Vector2(5.034, 2.60975)
+scale = Vector2(0.197854, 5.16971)
+texture = ExtResource("3_0hol4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground3"]
+position = Vector2(4.99999, -0.000443459)
 shape = SubResource("RectangleShape2D_q6r6c")
 
 [node name="Ground10" type="StaticBody2D" parent="." groups=["Ground"]]
