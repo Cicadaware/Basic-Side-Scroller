@@ -372,6 +372,7 @@ position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_d21ai")
 
 [node name="WinScreen" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Panel" type="Panel" parent="WinScreen"]
 anchors_preset = 15
