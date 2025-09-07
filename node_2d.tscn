@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dmtml1es2u8tg"]
+[gd_scene load_steps=11 format=3 uid="uid://dmtml1es2u8tg"]
 
 [ext_resource type="Script" uid="uid://chwgfm4defjwi" path="res://player.gd" id="1_0e48y"]
+[ext_resource type="Script" uid="uid://dhfu1qlr5mc3l" path="res://node_2d.gd" id="1_kdubu"]
 [ext_resource type="Texture2D" uid="uid://pw3pxx865n8c" path="res://resources/ball.png" id="2_q6r6c"]
 [ext_resource type="Texture2D" uid="uid://c2pm2ps72mgyy" path="res://resources/floor.png" id="3_0hol4"]
 [ext_resource type="Texture2D" uid="uid://r0p0dlhdxsg" path="res://resources/triangle.png" id="4_0hol4"]
@@ -14,7 +15,11 @@ size = Vector2(5.3, 64.25)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6r6c"]
 size = Vector2(128, 128)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d21ai"]
+size = Vector2(308, 221)
+
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_kdubu")
 
 [node name="Arrow" type="Sprite2D" parent="."]
 position = Vector2(-88, -204)
@@ -74,7 +79,31 @@ rotation = -0.519905
 scale = Vector2(0.282707, 0.379693)
 texture = ExtResource("5_q6r6c")
 
-[node name="Player" type="RigidBody2D" parent="."]
+[node name="Arrow11" type="Sprite2D" parent="."]
+position = Vector2(4296, -795)
+rotation = -2.41671
+scale = Vector2(0.282707, 0.379693)
+texture = ExtResource("5_q6r6c")
+
+[node name="Arrow12" type="Sprite2D" parent="."]
+position = Vector2(4139, -1032)
+rotation = -0.735509
+scale = Vector2(0.282707, 0.379693)
+texture = ExtResource("5_q6r6c")
+
+[node name="Arrow13" type="Sprite2D" parent="."]
+position = Vector2(4255, -1291)
+rotation = -2.1936
+scale = Vector2(0.282707, 0.379693)
+texture = ExtResource("5_q6r6c")
+
+[node name="Arrow14" type="Sprite2D" parent="."]
+position = Vector2(4192, -1555)
+rotation = -0.519905
+scale = Vector2(0.282707, 0.379693)
+texture = ExtResource("5_q6r6c")
+
+[node name="Player" type="RigidBody2D" parent="." groups=["Player"]]
 position = Vector2(-229, -53)
 script = ExtResource("1_0e48y")
 
@@ -229,30 +258,6 @@ texture = ExtResource("3_0hol4")
 position = Vector2(5, 3)
 shape = SubResource("RectangleShape2D_q6r6c")
 
-[node name="Arrow11" type="Sprite2D" parent="."]
-position = Vector2(4296, -788)
-rotation = -2.41671
-scale = Vector2(0.282707, 0.379693)
-texture = ExtResource("5_q6r6c")
-
-[node name="Arrow12" type="Sprite2D" parent="."]
-position = Vector2(4139, -1025)
-rotation = -0.735509
-scale = Vector2(0.282707, 0.379693)
-texture = ExtResource("5_q6r6c")
-
-[node name="Arrow13" type="Sprite2D" parent="."]
-position = Vector2(4255, -1284)
-rotation = -2.1936
-scale = Vector2(0.282707, 0.379693)
-texture = ExtResource("5_q6r6c")
-
-[node name="Arrow14" type="Sprite2D" parent="."]
-position = Vector2(4192, -1548)
-rotation = -0.519905
-scale = Vector2(0.282707, 0.379693)
-texture = ExtResource("5_q6r6c")
-
 [node name="Ground11" type="StaticBody2D" parent="." groups=["Ground"]]
 position = Vector2(4495, -648)
 scale = Vector2(2, 0.383)
@@ -359,4 +364,35 @@ texture = ExtResource("3_0hol4")
 position = Vector2(5, 3)
 shape = SubResource("RectangleShape2D_q6r6c")
 
+[node name="WinArea" type="Area2D" parent="."]
+position = Vector2(4480, -1770)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WinArea"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_d21ai")
+
+[node name="WinScreen" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="WinScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="WinScreen/Panel"]
+layout_mode = 0
+offset_left = 542.0
+offset_top = 309.0
+offset_right = 610.0
+offset_bottom = 332.0
+text = "You Win!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="body_entered" from="Player/FloorArea" to="Player" method="_on_floor_area_body_entered"]
+[connection signal="body_entered" from="WinArea" to="." method="_on_win_area_body_entered"]
