@@ -9,4 +9,3 @@ func win_game() -> void:
 	print("You Win!")
 	get_tree().paused = true
 	$WinScreen.show()
-	
