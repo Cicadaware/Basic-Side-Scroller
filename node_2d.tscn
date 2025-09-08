@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dmtml1es2u8tg"]
+[gd_scene load_steps=13 format=3 uid="uid://dmtml1es2u8tg"]
 
 [ext_resource type="Script" uid="uid://chwgfm4defjwi" path="res://player.gd" id="1_0e48y"]
 [ext_resource type="Script" uid="uid://dhfu1qlr5mc3l" path="res://node_2d.gd" id="1_kdubu"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c2pm2ps72mgyy" path="res://resources/floor.png" id="3_0hol4"]
 [ext_resource type="Texture2D" uid="uid://r0p0dlhdxsg" path="res://resources/triangle.png" id="4_0hol4"]
 [ext_resource type="Texture2D" uid="uid://c4u82g56gpi0q" path="res://resources/arrow.png" id="5_q6r6c"]
+[ext_resource type="Texture2D" uid="uid://bu7wn55ajqr74" path="res://resources/ballshine.png" id="5_rj586"]
 [ext_resource type="Texture2D" uid="uid://b0nss4iorpftg" path="res://resources/winflag.png" id="7_d21ai"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_epypp"]
@@ -108,13 +109,20 @@ texture = ExtResource("5_q6r6c")
 position = Vector2(-229, -53)
 script = ExtResource("1_0e48y")
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-scale = Vector2(0.85802, 1)
-texture = ExtResource("2_q6r6c")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 scale = Vector2(5, 5)
 shape = SubResource("CircleShape2D_epypp")
+
+[node name="RollingPart" type="Node2D" parent="Player"]
+
+[node name="BallSprite" type="Sprite2D" parent="Player/RollingPart"]
+position = Vector2(1.52588e-05, -1.14441e-05)
+scale = Vector2(1.08696, 1.2987)
+texture = ExtResource("2_q6r6c")
+
+[node name="shine" type="Sprite2D" parent="Player"]
+scale = Vector2(1.08504, 1.28091)
+texture = ExtResource("5_rj586")
 
 [node name="FloorArea" type="Area2D" parent="Player"]
 scale = Vector2(25, 1)
@@ -167,12 +175,12 @@ scale = Vector2(19.8316, 24.7876)
 polygon = PackedVector2Array(2.79994, 3.67267, 1.98265, 0.369649, 0.884191, -4.06972, -1.00208, 3.67267)
 
 [node name="Ground4" type="StaticBody2D" parent="." groups=["Ground"]]
-position = Vector2(1533, -217)
+position = Vector2(1485, -217)
 scale = Vector2(2, 0.383)
 
 [node name="Sprite2D" type="Sprite2D" parent="Ground4"]
-position = Vector2(5.034, 2.60975)
-scale = Vector2(0.197854, 5.16971)
+position = Vector2(5.00003, 3.91645)
+scale = Vector2(0.198142, 5.11749)
 texture = ExtResource("3_0hol4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground4"]
@@ -260,12 +268,12 @@ position = Vector2(5, 3)
 shape = SubResource("RectangleShape2D_q6r6c")
 
 [node name="Ground11" type="StaticBody2D" parent="." groups=["Ground"]]
-position = Vector2(4495, -648)
+position = Vector2(4447, -648)
 scale = Vector2(2, 0.383)
 
 [node name="Sprite2D" type="Sprite2D" parent="Ground11"]
-position = Vector2(5.034, 2.60975)
-scale = Vector2(0.197854, 5.16971)
+position = Vector2(5.00002, 3.91642)
+scale = Vector2(0.198142, 5.11749)
 texture = ExtResource("3_0hol4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground11"]
@@ -373,8 +381,8 @@ position = Vector2(17, 1)
 shape = SubResource("RectangleShape2D_d21ai")
 
 [node name="Sprite2D" type="Sprite2D" parent="WinArea"]
-position = Vector2(-24, 27)
-scale = Vector2(0.303077, 0.316514)
+position = Vector2(56.1634, 0.885365)
+scale = Vector2(0.718811, 0.577528)
 texture = ExtResource("7_d21ai")
 
 [node name="WinScreen" type="CanvasLayer" parent="."]

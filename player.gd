@@ -34,5 +34,7 @@ func _physics_process(delta: float) -> void:
 		jumps_left -= 1
 
 	# --- Rotate sprite for rolling effect ---
-	if $Sprite2D:
-		$Sprite2D.rotation += linear_velocity.x * delta / 50
+	if input_dir != 0:
+		$RollingPart.rotation += linear_velocity.x * delta /50
+		
+	$shine.rotation = -rotation
