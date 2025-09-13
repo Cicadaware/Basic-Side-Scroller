@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dmtml1es2u8tg"]
+[gd_scene load_steps=12 format=3 uid="uid://dmtml1es2u8tg"]
 
 [ext_resource type="Script" uid="uid://chwgfm4defjwi" path="res://player.gd" id="1_0e48y"]
 [ext_resource type="Script" uid="uid://dhfu1qlr5mc3l" path="res://node_2d.gd" id="1_kdubu"]
@@ -10,9 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://b0nss4iorpftg" path="res://resources/winflag.png" id="7_d21ai"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_epypp"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hol4"]
-size = Vector2(5.3, 64.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6r6c"]
 size = Vector2(128, 128)
@@ -123,13 +120,6 @@ texture = ExtResource("2_q6r6c")
 [node name="shine" type="Sprite2D" parent="Player"]
 scale = Vector2(1.08504, 1.28091)
 texture = ExtResource("5_rj586")
-
-[node name="FloorArea" type="Area2D" parent="Player"]
-scale = Vector2(25, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/FloorArea"]
-position = Vector2(5.96046e-08, 32)
-shape = SubResource("RectangleShape2D_0hol4")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
@@ -253,7 +243,7 @@ texture = ExtResource("3_0hol4")
 position = Vector2(5, 3)
 shape = SubResource("RectangleShape2D_q6r6c")
 
-[node name="Ground15" type="StaticBody2D" parent="." groups=["Ground"]]
+[node name="Ground15" type="StaticBody2D" parent="."]
 position = Vector2(1649, -638)
 rotation = 1.5708
 scale = Vector2(10, 0.383)
@@ -332,7 +322,7 @@ texture = ExtResource("3_0hol4")
 position = Vector2(5, 3)
 shape = SubResource("RectangleShape2D_q6r6c")
 
-[node name="Ground17" type="StaticBody2D" parent="." groups=["Ground"]]
+[node name="Ground17" type="StaticBody2D" parent="."]
 position = Vector2(4611, -1069)
 rotation = 1.5708
 scale = Vector2(10, 0.383)
@@ -346,7 +336,7 @@ texture = ExtResource("3_0hol4")
 position = Vector2(5, 3)
 shape = SubResource("RectangleShape2D_q6r6c")
 
-[node name="Ground3" type="StaticBody2D" parent="." groups=["Ground"]]
+[node name="Ground3" type="StaticBody2D" parent="."]
 position = Vector2(-309, -638)
 rotation = 1.5708
 scale = Vector2(10, 0.383)
@@ -424,6 +414,5 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Restart"
 
-[connection signal="body_entered" from="Player/FloorArea" to="Player" method="_on_floor_area_body_entered"]
 [connection signal="body_entered" from="WinArea" to="." method="_on_win_area_body_entered"]
 [connection signal="pressed" from="WinScreen/RestartButton" to="." method="_on_restart_button_pressed"]
