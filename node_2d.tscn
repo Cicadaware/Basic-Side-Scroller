@@ -263,7 +263,8 @@ position = Vector2(1090, -437)
 scale = Vector2(2, 0.383)
 
 [node name="Sprite2D" type="Sprite2D" parent="Ground5"]
-position = Vector2(4.00001, 5.22189)
+position = Vector2(4.00001, -73.107)
+rotation = 3.14159
 scale = Vector2(0.164375, 0.652747)
 texture = ExtResource("8_x0ka3")
 
@@ -289,12 +290,13 @@ position = Vector2(1041, -965)
 scale = Vector2(2, 0.383)
 
 [node name="Sprite2D" type="Sprite2D" parent="Ground8"]
-position = Vector2(5.99999, 36.5536)
+position = Vector2(5.99999, -33.9425)
+rotation = 3.14159
 scale = Vector2(0.165, 0.613575)
 texture = ExtResource("8_x0ka3")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Ground8"]
-position = Vector2(5.5, -8.58307e-06)
+position = Vector2(5.5, 0)
 shape = SubResource("RectangleShape2D_ta5nu")
 
 [node name="Ground11" type="StaticBody2D" parent="." groups=["Ground"]]
@@ -315,7 +317,8 @@ position = Vector2(4003, -1396)
 scale = Vector2(2, 0.383)
 
 [node name="Sprite2D" type="Sprite2D" parent="Ground17"]
-position = Vector2(5.50005, 33.9428)
+position = Vector2(5.50005, -33.9426)
+rotation = 3.14159
 scale = Vector2(0.165, 0.613575)
 texture = ExtResource("8_x0ka3")
 
@@ -328,7 +331,8 @@ position = Vector2(4052, -868)
 scale = Vector2(2, 0.383)
 
 [node name="Sprite2D" type="Sprite2D" parent="Ground22"]
-position = Vector2(5.00005, 39.1647)
+position = Vector2(5.00005, -33.9425)
+rotation = 3.14159
 scale = Vector2(0.165, 0.613575)
 texture = ExtResource("8_x0ka3")
 
@@ -348,7 +352,6 @@ texture = ExtResource("6_4d7sh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground9"]
 position = Vector2(4.99998, 3.00098)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_q6r6c")
 
 [node name="Ground15" type="StaticBody2D" parent="."]
@@ -378,7 +381,6 @@ texture = ExtResource("10_x0ka3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground16"]
 position = Vector2(2.59999, 2.61664)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_nr8wp")
 
 [node name="Ground19" type="StaticBody2D" parent="."]
