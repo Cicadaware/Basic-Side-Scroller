@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dmtml1es2u8tg"]
+[gd_scene load_steps=23 format=3 uid="uid://dmtml1es2u8tg"]
 
 [ext_resource type="Script" uid="uid://chwgfm4defjwi" path="res://player.gd" id="1_0e48y"]
 [ext_resource type="Script" uid="uid://dhfu1qlr5mc3l" path="res://node_2d.gd" id="1_kdubu"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bu7wn55ajqr74" path="res://resources/ballshine.png" id="5_rj586"]
 [ext_resource type="Texture2D" uid="uid://chxkx7a6ug3m8" path="res://resources/woodenfloor.png" id="6_4d7sh"]
 [ext_resource type="Texture2D" uid="uid://by6hw2yny2jp7" path="res://resources/sandFloor.png" id="6_hqns4"]
+[ext_resource type="Texture2D" uid="uid://dr4ggoqkw67bj" path="res://resources/background.png" id="7_0h7mo"]
 [ext_resource type="Texture2D" uid="uid://b0nss4iorpftg" path="res://resources/winflag.png" id="7_d21ai"]
 [ext_resource type="Texture2D" uid="uid://dmkfgqf75c4at" path="res://resources/woodenconnectedPlatform.png" id="8_ir8iy"]
 [ext_resource type="Texture2D" uid="uid://buyudrv5tymtm" path="res://resources/woodenFreePlatform.png" id="8_x0ka3"]
@@ -41,6 +42,15 @@ size = Vector2(130.932, 125.268)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_kdubu")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_0h7mo")
+stretch_mode = 5
 
 [node name="arrowPost" type="Sprite2D" parent="."]
 position = Vector2(96.25, -20.25)
