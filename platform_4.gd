@@ -1,7 +1,13 @@
 extends StaticBody2D
 
 @onready var collision = $CollisionShape2D
+@onready var sprites = [$Sprite2D, $ArrowPost, $Arrow]
 
+var active_alpha := 1.0
+var inactive_alpha := 0.25
 func toggle_state():
-	visible = !visible
-	collision.disabled = !visible
+	collision.disabled = !collision.disabled
+	
+	var target_alpha = inactive_alpha if collision.disabled else active_alpha
+	for sprite in sprites:
+		sprite.modulate = Color(1, 1, 1, target_alpha)

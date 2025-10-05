@@ -11,8 +11,12 @@ func win_game() -> void:
 	get_tree().paused = true
 	
 	var window_size = get_viewport().get_visible_rect().size
-	$WinScreen/Confetti.position = window_size / 2
-	$WinScreen/Confetti2.position = window_size / 2
+	
+	var particleOffset = Vector2(200, 0)
+	$WinScreen/Confetti.position = window_size / 2 - particleOffset
+	$WinScreen/Confetti2.position = window_size / 2 + particleOffset
+	
+	$WinScreen/Sparkles.position = window_size / 2
 	
 	$WinScreen/Confetti.emitting = true
 	$WinScreen/Confetti2.emitting = true
@@ -25,11 +29,11 @@ func _on_restart_button_pressed() -> void:
 func _ready():
 	timer.start()
 	timer.timeout.connect(_on_timer_timeout)
-	print(get_tree().get_nodes_in_group("disappearingPlatform"))
-	
+	get_tree().call_group("disappearingPlatform2", "toggle_state")
 
 func _on_timer_timeout():
 	get_tree().call_group("disappearingPlatform", "toggle_state")
+	get_tree().call_group("disappearingPlatform2", "toggle_state")
 
 func _on_death_area_body_entered(body):
 	if body.is_in_group("Player"):

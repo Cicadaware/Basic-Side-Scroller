@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Ground=""
 disappearingPlatform=""
+disappearingPlatform2=""
 
 [input]
 
