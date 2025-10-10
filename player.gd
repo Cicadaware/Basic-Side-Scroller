@@ -31,7 +31,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	# --- Horizontal movement ---
 	var input_dir = Input.get_axis("ui_left", "ui_right")
 	apply_central_impulse(Vector2(input_dir * SPEED * state.step, 0))
-
+	
 	# --- Jump ---
 	if Input.is_action_just_pressed("ui_accept") and jumps_left > 0:
 		apply_central_impulse(Vector2(0, -JUMP_FORCE))

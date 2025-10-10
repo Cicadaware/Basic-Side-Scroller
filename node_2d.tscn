@@ -1,9 +1,14 @@
-[gd_scene load_steps=36 format=3 uid="uid://dmtml1es2u8tg"]
+[gd_scene load_steps=41 format=3 uid="uid://dmtml1es2u8tg"]
 
 [ext_resource type="Script" uid="uid://chwgfm4defjwi" path="res://player.gd" id="1_0e48y"]
 [ext_resource type="Script" uid="uid://dhfu1qlr5mc3l" path="res://node_2d.gd" id="1_kdubu"]
+[ext_resource type="Texture2D" uid="uid://bn52uwun17own" path="res://resources/move_board.png" id="2_bjha6"]
 [ext_resource type="Texture2D" uid="uid://pw3pxx865n8c" path="res://resources/ball.png" id="2_q6r6c"]
 [ext_resource type="Texture2D" uid="uid://bc42oasigc2b0" path="res://resources/arrowPost.png" id="2_x0ka3"]
+[ext_resource type="Texture2D" uid="uid://cmneq705c8wy" path="res://resources/jump_board.png" id="3_gt76g"]
+[ext_resource type="Texture2D" uid="uid://idbqj5xqv4qv" path="res://resources/double_jump_board.png" id="4_1fr6y"]
+[ext_resource type="Texture2D" uid="uid://dyhri0kioed2m" path="res://resources/rock.png" id="5_2hxjc"]
+[ext_resource type="Texture2D" uid="uid://btlb6saidjy15" path="res://resources/warning_sign.png" id="5_gt76g"]
 [ext_resource type="Texture2D" uid="uid://c4u82g56gpi0q" path="res://resources/arrow.png" id="5_q6r6c"]
 [ext_resource type="Texture2D" uid="uid://bu7wn55ajqr74" path="res://resources/ballshine.png" id="5_rj586"]
 [ext_resource type="Texture2D" uid="uid://chxkx7a6ug3m8" path="res://resources/woodenfloor.png" id="6_4d7sh"]
@@ -21,7 +26,9 @@
 [ext_resource type="Script" uid="uid://cicessxts8typ" path="res://platform_12.gd" id="16_e8dv2"]
 [ext_resource type="Script" uid="uid://crds0suisuabe" path="res://win_screen.gd" id="16_flf07"]
 [ext_resource type="Script" uid="uid://7j3che1u565o" path="res://platform_10.gd" id="17_2nhjh"]
-[ext_resource type="Texture2D" uid="uid://dn6hoosy810dy" path="res://resources/confetti_cannon.png" id="21_ei405"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ebxd8"]
+radius = 220.36082
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d21ai"]
 size = Vector2(94.5, 221)
@@ -74,6 +81,39 @@ size = Vector2(10971, 2819)
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_kdubu")
 
+[node name="Move_board" type="Sprite2D" parent="."]
+position = Vector2(-16, -48)
+scale = Vector2(0.13077858, 0.117704295)
+texture = ExtResource("2_bjha6")
+
+[node name="Jump_board" type="Sprite2D" parent="."]
+position = Vector2(359.99997, -40)
+scale = Vector2(0.12697689, 0.13241734)
+texture = ExtResource("3_gt76g")
+
+[node name="DoubleJump_board" type="Sprite2D" parent="."]
+position = Vector2(872, -48)
+scale = Vector2(0.12743317, 0.12500003)
+texture = ExtResource("4_1fr6y")
+
+[node name="warning_board" type="Sprite2D" parent="."]
+position = Vector2(1361.5, -55.625)
+scale = Vector2(0.47399986, 0.51312786)
+texture = ExtResource("5_gt76g")
+
+[node name="Rock" type="StaticBody2D" parent="."]
+position = Vector2(607.99994, -24)
+rotation = -6.8330475e-05
+scale = Vector2(0.2855347, 0.26611996)
+skew = -0.040884376
+
+[node name="Sprite2D" type="Sprite2D" parent="Rock"]
+texture = ExtResource("5_2hxjc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rock"]
+position = Vector2(0.00024414063, -7.6293945e-05)
+shape = SubResource("CircleShape2D_ebxd8")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
 
@@ -117,22 +157,23 @@ texture = ExtResource("5_rj586")
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="arrowPost" type="Sprite2D" parent="."]
-position = Vector2(96.25, -20.25)
+position = Vector2(148.38148, -14.625099)
 scale = Vector2(0.135714, 0.14939)
 texture = ExtResource("2_x0ka3")
 
 [node name="arrowPost2" type="Sprite2D" parent="."]
-position = Vector2(745, -23)
+position = Vector2(1126.1315, -19.3751)
 scale = Vector2(0.135714, 0.14939)
 texture = ExtResource("2_x0ka3")
 
 [node name="Arrow" type="Sprite2D" parent="."]
-position = Vector2(104, -56)
+position = Vector2(156.13148, -50.3751)
 scale = Vector2(0.22519, 0.237951)
 texture = ExtResource("5_q6r6c")
 
 [node name="Arrow2" type="Sprite2D" parent="."]
-position = Vector2(751, -54)
+position = Vector2(1132.1315, -50.3751)
+rotation = -0.43873966
 scale = Vector2(0.22519, 0.237951)
 texture = ExtResource("5_q6r6c")
 
@@ -506,6 +547,7 @@ position = Vector2(5.5, -36.5536)
 shape = SubResource("RectangleShape2D_hqns4")
 
 [node name="WinScreen" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("16_flf07")
 
 [node name="Panel" type="Panel" parent="WinScreen"]
@@ -540,10 +582,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -32.0
+offset_left = -120.0
 offset_top = 52.0
-offset_right = 29.0
-offset_bottom = 79.0
+offset_right = 2.0
+offset_bottom = 88.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
@@ -553,6 +595,27 @@ theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 12
 theme_override_styles/normal = SubResource("StyleBoxFlat_rjqkl")
 text = "Restart"
+
+[node name="nextLevelButton" type="Button" parent="WinScreen"]
+process_mode = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = 52.0
+offset_right = 130.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = SubResource("Theme_k73cj")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_rjqkl")
+text = "Next Level"
 
 [node name="Confetti" type="CPUParticles2D" parent="WinScreen"]
 process_mode = 3
@@ -606,24 +669,12 @@ scale_amount_max = 2.0
 color = Color(1, 0.9043261, 0.5873669, 0.99500006)
 color_ramp = SubResource("Gradient_ta5nu")
 
-[node name="Sprite2D" type="Sprite2D" parent="WinScreen"]
-position = Vector2(400.00003, 304.00003)
-rotation = 5.497787
-scale = Vector2(0.04160871, 0.039705075)
-texture = ExtResource("21_ei405")
-
-[node name="Sprite2D2" type="Sprite2D" parent="WinScreen"]
-position = Vector2(752, 304.00006)
-rotation = 0.7853982
-scale = Vector2(0.04160871, 0.039705075)
-texture = ExtResource("21_ei405")
-
 [node name="Ground" type="StaticBody2D" parent="." groups=["Ground"]]
 position = Vector2(618, 27)
 scale = Vector2(15.296, 0.383178)
 
 [node name="Sprite2D" type="Sprite2D" parent="Ground"]
-position = Vector2(-62.369244, 973.438)
+position = Vector2(-63.938286, 994.316)
 scale = Vector2(0.083048806, 2.62933)
 texture = ExtResource("6_hqns4")
 
