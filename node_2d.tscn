@@ -1,13 +1,15 @@
-[gd_scene load_steps=47 format=3 uid="uid://dmtml1es2u8tg"]
+[gd_scene load_steps=52 format=3 uid="uid://dmtml1es2u8tg"]
 
 [ext_resource type="Script" uid="uid://chwgfm4defjwi" path="res://player.gd" id="1_0e48y"]
 [ext_resource type="Script" uid="uid://dhfu1qlr5mc3l" path="res://node_2d.gd" id="1_kdubu"]
+[ext_resource type="Texture2D" uid="uid://s5mbbll6h6ll" path="res://resources/forest_background.png" id="2_1fr6y"]
 [ext_resource type="Texture2D" uid="uid://bn52uwun17own" path="res://resources/move_board.png" id="2_bjha6"]
 [ext_resource type="Texture2D" uid="uid://cxa2pc8c4auo5" path="res://resources/background_filler.png" id="2_gt76g"]
 [ext_resource type="Texture2D" uid="uid://pw3pxx865n8c" path="res://resources/ball.png" id="2_q6r6c"]
 [ext_resource type="Texture2D" uid="uid://bc42oasigc2b0" path="res://resources/arrowPost.png" id="2_x0ka3"]
 [ext_resource type="Texture2D" uid="uid://cmneq705c8wy" path="res://resources/jump_board.png" id="3_gt76g"]
 [ext_resource type="Texture2D" uid="uid://idbqj5xqv4qv" path="res://resources/double_jump_board.png" id="4_1fr6y"]
+[ext_resource type="Texture2D" uid="uid://dr6v6mnas6wfw" path="res://resources/grass.png" id="4_2hxjc"]
 [ext_resource type="Texture2D" uid="uid://dyhri0kioed2m" path="res://resources/rock.png" id="5_2hxjc"]
 [ext_resource type="Texture2D" uid="uid://btlb6saidjy15" path="res://resources/warning_sign.png" id="5_gt76g"]
 [ext_resource type="Texture2D" uid="uid://c4u82g56gpi0q" path="res://resources/arrow.png" id="5_q6r6c"]
@@ -24,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://bl88hmffusuqr" path="res://resources/slow_sign.png" id="15_1fr6y"]
 [ext_resource type="Script" uid="uid://crds0suisuabe" path="res://win_screen.gd" id="16_flf07"]
 [ext_resource type="Texture2D" uid="uid://dy20hvll03lg1" path="res://resources/cloud.png" id="17_2hxjc"]
+[ext_resource type="Texture2D" uid="uid://d3xj53bokrj08" path="res://resources/thunder_particle_texture.png" id="27_1fr6y"]
 [ext_resource type="Script" uid="uid://dqkpruymfv6y2" path="res://cloud_flight_particle.gd" id="29_ebxd8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ebxd8"]
@@ -62,7 +65,7 @@ size = Vector2(127.5, 48.081)
 size = Vector2(128, 127.773)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0h7mo"]
-size = Vector2(123.2, 130.548)
+size = Vector2(123.29999, 130.55379)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nr8wp"]
 size = Vector2(123.2, 130.548)
@@ -90,26 +93,53 @@ offsets = PackedFloat32Array(0.19178082, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x0ka3"]
-size = Vector2(130.932, 125.268)
+size = Vector2(130.932, 122.658325)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_flf07"]
-size = Vector2(10971, 2819)
+size = Vector2(6475.5, 504.5)
 
 [sub_resource type="Curve" id="Curve_ebxd8"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="Curve" id="Curve_2hxjc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.505814, 0.516854), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_2u7jv"]
+_data = [Vector2(0, 0.52808994), 0.0, 0.0, 0, 0, Vector2(0.48837215, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_kdubu")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1475, -728)
+[node name="Forest_background" type="Sprite2D" parent="."]
+position = Vector2(680, -600)
+texture = ExtResource("2_1fr6y")
+
+[node name="Forest_filler" type="Sprite2D" parent="."]
+position = Vector2(1416, -720)
 texture = ExtResource("2_gt76g")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-32, -33)
+scale = Vector2(0.541, 0.30784315)
+texture = ExtResource("4_2hxjc")
+
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(1238.25, -622)
-scale = Vector2(0.388, 0.592)
-texture = ExtResource("2_gt76g")
+position = Vector2(476.00003, -34)
+scale = Vector2(0.541, 0.30784315)
+texture = ExtResource("4_2hxjc")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(980.00006, -34)
+scale = Vector2(0.541, 0.30784315)
+texture = ExtResource("4_2hxjc")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(1405, -34)
+scale = Vector2(0.541, 0.30784315)
+texture = ExtResource("4_2hxjc")
 
 [node name="Move_board" type="Sprite2D" parent="."]
 position = Vector2(25, -50)
@@ -716,8 +746,8 @@ scale = Vector2(0.0399927, 0.647086)
 texture = ExtResource("10_x0ka3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground15"]
-position = Vector2(2.6, 2.60986)
-scale = Vector2(1, 0.999999)
+position = Vector2(2.6499863, 2.6079102)
+scale = Vector2(0.9999998, 0.99999887)
 shape = SubResource("RectangleShape2D_0h7mo")
 
 [node name="Ground16" type="StaticBody2D" parent="."]
@@ -731,7 +761,7 @@ scale = Vector2(0.0399927, 0.647086)
 texture = ExtResource("10_x0ka3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground16"]
-position = Vector2(2.59999, 2.61664)
+position = Vector2(2.7000022, 2.6107342)
 shape = SubResource("RectangleShape2D_nr8wp")
 
 [node name="Platform 13" type="StaticBody2D" parent="." groups=["Ground"]]
@@ -881,20 +911,7 @@ scale = Vector2(0.083048806, 2.62933)
 texture = ExtResource("6_hqns4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
-position = Vector2(3.48915, 2.60976)
-shape = SubResource("RectangleShape2D_x0ka3")
-
-[node name="Ground2" type="StaticBody2D" parent="." groups=["Ground"]]
-position = Vector2(618, 27)
-scale = Vector2(15.296, 0.383178)
-
-[node name="Sprite2D" type="Sprite2D" parent="Ground2"]
-position = Vector2(-63.938286, 994.316)
-scale = Vector2(0.083048806, 2.62933)
-texture = ExtResource("6_hqns4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground2"]
-position = Vector2(3.48915, 2.60976)
+position = Vector2(3.489151, 3.9145966)
 shape = SubResource("RectangleShape2D_x0ka3")
 
 [node name="Timer" type="Timer" parent="."]
@@ -907,7 +924,7 @@ wait_time = 2.0
 position = Vector2(2704, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Death area"]
-position = Vector2(4804, 2485)
+position = Vector2(2556.25, 1327.75)
 shape = SubResource("RectangleShape2D_flf07")
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
@@ -927,6 +944,33 @@ color = Color(0.8784314, 0.8784314, 0.8784314, 1)
 script = ExtResource("29_ebxd8")
 target = NodePath("../Player")
 offset = Vector2(0, 48)
+
+[node name="Lightning" type="CPUParticles2D" parent="."]
+position = Vector2(5267, 1093)
+scale = Vector2(1.268796, 0.24284528)
+amount = 500
+texture = ExtResource("27_1fr6y")
+lifetime = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(2556.25, 1327.75)
+gravity = Vector2(0, 0)
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_2hxjc")
+
+[node name="Flies and bugs" type="CPUParticles2D" parent="."]
+position = Vector2(663, -115)
+amount = 1
+emission_shape = 3
+emission_rect_extents = Vector2(950, 70)
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 200)
+initial_velocity_min = 600.0
+initial_velocity_max = 600.0
+scale_amount_min = 2.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_2u7jv")
+color = Color(0.1481536, 0.071302675, 0.0060860915, 1)
 
 [connection signal="body_entered" from="WinArea" to="." method="_on_win_area_body_entered"]
 [connection signal="pressed" from="WinScreen/RestartButton" to="." method="_on_restart_button_pressed"]
