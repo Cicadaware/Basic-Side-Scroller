@@ -1,10 +1,6 @@
 extends PathFollow2D
 
-var speed = 200
+var speed = 300
 
 func _process(delta):
 	progress += speed * delta 
-
-func _ready():
-	loop = true
-	rotates = true
