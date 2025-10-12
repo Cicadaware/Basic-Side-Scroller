@@ -2,7 +2,7 @@ extends StaticBody2D
 
 @onready var collision = $CollisionShape2D
 @onready var collision2 = $Area2D/CollisionShape2D
-@onready var sprites = [$Sprite2D, $ArrowPost, $Arrow]
+@onready var sprites = [$Sprite2D]
 
 var active_alpha := 1.0
 var inactive_alpha := 0.25

@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var timer = $Timer
+@onready var lastSpawnPoint : Vector2 = $Player.global_position
 
 func _on_win_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
@@ -40,14 +41,16 @@ func _on_death_area_body_entered(body):
 		respawn_player(body)
 
 func respawn_player(player : RigidBody2D):
-	
 	player.linear_velocity = Vector2.ZERO
 	player.angular_velocity = 0
 	
 	await get_tree().physics_frame
 	
-	player.global_position = $SpawnPoint.global_position
+	player.global_position = lastSpawnPoint
 	player.rotation = 0
 
 	player.set_sleeping(true)
 	player.set_sleeping(false)
+
+func _on_spawn_point_body_entered(body: Node2D) -> void:
+	lastSpawnPoint = body.global_position
