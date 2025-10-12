@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://dmtml1es2u8tg"]
+[gd_scene load_steps=64 format=3 uid="uid://dmtml1es2u8tg"]
 
 [ext_resource type="Script" uid="uid://chwgfm4defjwi" path="res://player.gd" id="1_0e48y"]
 [ext_resource type="Script" uid="uid://dhfu1qlr5mc3l" path="res://node_2d.gd" id="1_kdubu"]
@@ -24,6 +24,7 @@
 [ext_resource type="Script" uid="uid://bvoc8h1sp6p1x" path="res://disappearing_cloud_platforms.gd" id="14_2nhjh"]
 [ext_resource type="Script" uid="uid://b2531xhnksqnf" path="res://area_2d.gd" id="14_2u7jv"]
 [ext_resource type="Texture2D" uid="uid://bl88hmffusuqr" path="res://resources/slow_sign.png" id="15_1fr6y"]
+[ext_resource type="Texture2D" uid="uid://da4qm08bj1mko" path="res://resources/airballoon_sign.png" id="16_540hr"]
 [ext_resource type="Script" uid="uid://dbl4dd3eeik8s" path="res://moving_platform.gd" id="16_ebxd8"]
 [ext_resource type="Script" uid="uid://crds0suisuabe" path="res://win_screen.gd" id="16_flf07"]
 [ext_resource type="Texture2D" uid="uid://dy20hvll03lg1" path="res://resources/cloud.png" id="17_2hxjc"]
@@ -305,6 +306,11 @@ script = ExtResource("14_2u7jv")
 position = Vector2(4, -68.10693)
 shape = SubResource("RectangleShape2D_24dk6")
 
+[node name="AirBalloon_sign2" type="Sprite2D" parent="."]
+position = Vector2(11987, -3796.0002)
+scale = Vector2(0.21908532, 0.19554788)
+texture = ExtResource("16_540hr")
+
 [node name="Cloud Platform 7" type="StaticBody2D" parent="." groups=["Cloud", "Ground"]]
 position = Vector2(12011, -3566)
 scale = Vector2(2, 0.383)
@@ -561,7 +567,7 @@ position = Vector2(5.5, -28.720703)
 shape = SubResource("RectangleShape2D_24dk6")
 
 [node name="Player" type="RigidBody2D" parent="." groups=["Player"]]
-position = Vector2(-230, -45)
+position = Vector2(-230, -44)
 script = ExtResource("1_0e48y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -1442,6 +1448,11 @@ scale_amount_min = 2.0
 scale_amount_max = 5.0
 scale_amount_curve = SubResource("Curve_2u7jv")
 color = Color(0.1481536, 0.071302675, 0.0060860915, 1)
+
+[node name="AirBalloon_sign" type="Sprite2D" parent="."]
+position = Vector2(5479, -3892)
+scale = Vector2(0.21908532, 0.19554788)
+texture = ExtResource("16_540hr")
 
 [connection signal="body_entered" from="WinArea" to="." method="_on_win_area_body_entered"]
 [connection signal="body_entered" from="Path2D/PathFollow2D/Area2D" to="." method="_on_death_area_body_entered"]
